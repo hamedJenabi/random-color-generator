@@ -8,6 +8,7 @@ const randomColor = require('randomcolor');
   output: process.stdout,
 });
 */
+
 //this is random value
 let randomColorNull = randomHex.generate();
 //this is input value
@@ -43,30 +44,52 @@ let answer = randomColor({
   hue: colorMain,
 });
 
-if (colorName) {
+if (process.argv[2] === 'ask') {
+  const readline = require('readline').createInterface({
+    input: process.stdin,
+    output: process.stdout,
+  });
+  readline.question('Which color?', (color) => {
+    let hexColor = toHex(color);
+
+    const design = `###############################
+    ###############################
+    ###############################
+    ######                #########
+    ######     ${hexColor}    #########
+    ######                #########
+    ###############################
+    ###############################
+    ###############################`;
+    const print = createColor(color);
+    const msg = print(design);
+    console.log(msg);
+    readline.close();
+  });
+} else if (colorName !== 'ask') {
   const design = `###############################
-###############################
-###############################
-######                #########
-######     ${answer}    #########
-######                #########
-###############################
-###############################
-###############################`;
+    ###############################
+    ###############################
+    ######                #########
+    ######     ${answer}    #########
+    ######                #########
+    ###############################
+    ###############################
+    ###############################`;
 
   const print = createColor(answer);
   const msg = print(design);
   console.log(msg);
 } else {
   const design = `###############################
-###############################
-###############################
-######                #########
-######     ${randomColorNull}    #########
-######                #########
-###############################
-###############################
-###############################`;
+    ###############################
+    ###############################
+    ######                #########
+    ######     ${randomColorNull}    #########
+    ######                #########
+    ###############################
+    ###############################
+    ###############################`;
   const print = createColor(randomColorNull);
   const msg = print(design);
   console.log(msg);
