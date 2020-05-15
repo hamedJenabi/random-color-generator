@@ -15,7 +15,9 @@ let randomColorNull = randomHex.generate();
 
 //this is the desing
 
-const design = `###############################
+const design = `
+
+###############################
 ###############################
 ###############################
 ######                #########
@@ -26,16 +28,17 @@ const design = `###############################
 ###############################`;
 
 // This asks you fro color with question
-/*readline.question('Which color?', (color) => {
-  const print = createColor(color);
-  const msg = print(design);
-  console.log(msg);
-  readline.close();
-});
-*/
+// readline.question('Which color?', (color) => {
+//   const print = createColor(color);
+//   const msg = print(design);
+//   console.log(msg);
+//   readline.close();
+// });
+//
 
 let colorMain = process.argv[2];
-let colorVersion = process.argv[3];
+
+let colorVersion = process.argv[3]; // THIS is version of color like "light"
 
 let colorName = colorVersion + colorMain;
 
@@ -43,6 +46,7 @@ let answer = randomColor({
   luminosity: colorVersion,
   hue: colorMain,
 });
+//*************** THIS ASKS USER WHICH COLOR
 
 if (process.argv[2] === 'ask') {
   const readline = require('readline').createInterface({
@@ -52,7 +56,9 @@ if (process.argv[2] === 'ask') {
   readline.question('Which color?', (color) => {
     let hexColor = toHex(color);
 
-    const design = `###############################
+    const design = `
+
+    ###############################
     ###############################
     ###############################
     ######                #########
@@ -67,7 +73,9 @@ if (process.argv[2] === 'ask') {
     readline.close();
   });
 } else if (colorName !== 'ask') {
-  const design = `###############################
+  const design = `
+
+    ###############################
     ###############################
     ###############################
     ######                #########
@@ -81,7 +89,10 @@ if (process.argv[2] === 'ask') {
   const msg = print(design);
   console.log(msg);
 } else {
-  const design = `###############################
+  //*************** THIS IS RANDOM
+  const design = `
+  
+    ###############################
     ###############################
     ###############################
     ######                #########
