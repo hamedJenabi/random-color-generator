@@ -3,46 +3,17 @@ const createColor = require('my-colors');
 const toHex = require('colornames');
 const randomColor = require('randomcolor');
 
-/*const readline = require('readline').createInterface({
-  input: process.stdin,
-  output: process.stdout,
-});
-*/
-
 //this is random value
-let randomColorNull = randomHex.generate();
+const randomColorNull = randomHex.generate();
 //this is input value
 
-//this is the desing
+//this is the design
 
-const design = `
+const colorMain = process.argv[2];
+const colorVersion = process.argv[3]; // THIS is version of color like "light"
+const colorName = colorVersion + colorMain;
 
-###############################
-###############################
-###############################
-######                #########
-######     ${randomColor}    #########
-######                #########
-###############################
-###############################
-###############################`;
-
-// This asks you fro color with question
-// readline.question('Which color?', (color) => {
-//   const print = createColor(color);
-//   const msg = print(design);
-//   console.log(msg);
-//   readline.close();
-// });
-//
-
-let colorMain = process.argv[2];
-
-let colorVersion = process.argv[3]; // THIS is version of color like "light"
-
-let colorName = colorVersion + colorMain;
-
-let answer = randomColor({
+const answer = randomColor({
   luminosity: colorVersion,
   hue: colorMain,
 });
@@ -54,10 +25,9 @@ if (process.argv[2] === 'ask') {
     output: process.stdout,
   });
   readline.question('Which color?', (color) => {
-    let hexColor = toHex(color);
+    const hexColor = toHex(color);
 
     const design = `
-
     ###############################
     ###############################
     ###############################
@@ -74,7 +44,6 @@ if (process.argv[2] === 'ask') {
   });
 } else if (colorName !== 'ask') {
   const design = `
-
     ###############################
     ###############################
     ###############################
@@ -90,8 +59,7 @@ if (process.argv[2] === 'ask') {
   console.log(msg);
 } else {
   //*************** THIS IS RANDOM
-  const design = `
-  
+  const design = `  
     ###############################
     ###############################
     ###############################
@@ -105,13 +73,3 @@ if (process.argv[2] === 'ask') {
   const msg = print(design);
   console.log(msg);
 }
-
-/*
-const print = createColor(randomColor);
-const msg = print(design);
-console.log(msg);
-*/
-//const print = createColor(answer);
-
-//const msg = print(design);
-//console.log(msg);

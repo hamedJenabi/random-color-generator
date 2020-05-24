@@ -6,11 +6,8 @@
   "author": "Hamed <hamed.jenabi@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "color-to-name": "^1.1.0",
     "colornames": "^1.1.1",
-    "colors": "^1.4.0",
     "my-colors": "^1.0.0",
-    "random-color-rgb": "^1.1.1",
     "random-hex": "^1.0.2",
     "randomcolor": "^0.5.4",
     "require": "^2.4.20"
